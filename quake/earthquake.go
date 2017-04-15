@@ -1,4 +1,4 @@
-package main
+package quake
 
 import (
 	"encoding/xml"

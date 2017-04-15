@@ -8,6 +8,8 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/ozym/nzstrong/quake"
 )
 
 func main() {
@@ -62,7 +64,7 @@ func main() {
 
 	flag.Parse()
 
-	q := Query{
+	q := quake.Query{
 		Service: service,
 		Limit:   limit,
 	}
@@ -90,10 +92,10 @@ func main() {
 
 		// perhaps check whether it has been updated recently
 		if since > 0 {
-			q.AddFilter("modificationtime", ">=", TimeOffsetNow(since))
+			q.AddFilter("modificationtime", ">=", quake.TimeOffsetNow(since))
 		}
 		if after > 0 {
-			q.AddFilter("modificationtime", "<=", TimeOffsetNow(after))
+			q.AddFilter("modificationtime", "<=", quake.TimeOffsetNow(after))
 		}
 	}
 
